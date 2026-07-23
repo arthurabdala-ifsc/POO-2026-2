@@ -4,4 +4,6 @@
 
 ## Aulas
 
-[Aula 1 - Git e Markdown](./2026-07-22-aula-1/)
+- [Aula 1 - Git e Markdown](./2026-07-22-aula-1/)
+
+## Laboratórios
