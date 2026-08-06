@@ -1,0 +1,3 @@
+juca,5.5,10
+airton,7,8
+leticia,2.5,6
