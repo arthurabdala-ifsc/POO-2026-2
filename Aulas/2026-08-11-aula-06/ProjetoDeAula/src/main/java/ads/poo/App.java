@@ -1,0 +1,22 @@
+package ads.poo;
+
+public class App {
+    static void main(String[] args) {
+
+        String nome = IO.readln("Entre com seu nome: ");
+
+        IO.println("Olá " + nome);
+
+        int contador = 0;
+
+        for (String aux : args){
+            if (aux.equals("POO")){
+                IO.println("Acertou!");
+            } else {
+                contador++;
+            }
+        }
+        IO.println("Total de argumentos diferentes de POO: " + contador);
+
+    }
+}
