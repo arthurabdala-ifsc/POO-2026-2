@@ -6,27 +6,22 @@ public class Carro {
     private int velocidadeMin = 0;
 
     public void acelerar(int incremento) {
-        if (incremento < 1){
-            return;
+        if (incremento > 0) {
+            if ((velocidadeAtual + incremento) > velocidadeMax) {
+                velocidadeAtual = velocidadeMax;
+            } else {
+                velocidadeAtual += incremento;
+            }
         }
-
-        velocidadeAtual += incremento;
-
-        if (velocidadeAtual > velocidadeMax){
-           velocidadeAtual = velocidadeMax;
-        }
-
     }
 
     public void frear(int decremento){
-        if (decremento < 1){
-            return;
-        }
-
-        velocidadeAtual -= decremento;
-
-        if (velocidadeAtual < velocidadeMin){
-            velocidadeAtual = velocidadeMin;
+        if (decremento > 0) {
+            if ((velocidadeAtual - decremento) < velocidadeMin) {
+                velocidadeAtual = velocidadeMin;
+            } else {
+                velocidadeAtual -= decremento;
+            }
         }
     }
 
