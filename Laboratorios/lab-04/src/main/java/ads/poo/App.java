@@ -2,6 +2,7 @@ package ads.poo;
 
 
 import java.util.HashMap;
+import java.util.function.BinaryOperator;
 
 public class App {
 
@@ -49,12 +50,73 @@ public class App {
 
     public void consultarLivroPorAutor(){
         String autor = IO.readln("Informe o autor: ");
+        boolean livroEncontrado = false;
 
-        livros.forEach((isbn, l)->{
-            if (l.getAutor().equals(autor)){
-                IO.println("ISBN: " + isbn + " Titulo: " + l.getTitulo());
+        for (var e : livros.entrySet()){
+            if (e.getValue().getAutor().equals(autor)){
+                IO.println("ISBN: " + e.getKey() + " Titulo: " + e.getValue().getTitulo());
+                livroEncontrado = true;
             }
-        });
+        }
+
+        if (!livroEncontrado){
+            IO.println("Não existem livros cadastrados para o autor informado!");
+        }
+    }
+
+    public void consultarLivroPorAno(){
+        int ano = Integer.parseInt(IO.readln("Informe o ano: "));
+        boolean livroEncontrado = false;
+
+        for (var e : livros.entrySet()){
+            if (e.getValue().getAnoPublicacao() == ano){
+                IO.println("ISBN: " + e.getKey() + " Titulo: " + e.getValue().getTitulo());
+                livroEncontrado = true;
+            }
+        }
+
+        if (!livroEncontrado){
+            IO.println("Não existem livros cadastrados para o autor informado!");
+        }
+    }
+
+    public void atualizarLivro(){
+        Livro livro = livros.get(obterIsbn());
+
+        if (livro == null) {
+            IO.println("Livro não encontrado!");
+        } else {
+            IO.println("Livro encontrado:\n ");
+            IO.println(livro.toString());
+
+            int atualizarAtributo = 0;
+            do {
+                IO.println("(1) Titulo");
+                IO.println("(2) Autor");
+                IO.println("(3) Ano de Publicação");
+                IO.println("(4) Sair");
+                IO.println("Informe o atributo que deseja atualizar: ");
+
+                switch (atualizarAtributo){
+                    case 1:
+                        atualizarTitulo();
+                        break;
+                    case 4:
+                        atualizarAtributo = 4;
+                        break;
+                    default:
+                        IO.println("Opção inválida!!");
+                        break;
+                }
+            } while (atualizarAtributo!=4);
+        }
+    }
+    public void atualizarTitulo(){
+        String titulo = IO.readln("Informe o titulo: ");
+
+        for (var e : livros.entrySet()){
+
+        }
     }
 
     public String obterIsbn(){
